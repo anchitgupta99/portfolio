@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" class="csstransitions">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>visuallymeta - Creative</title>
+  <link rel="shortcut icon" href="image/svg/logo white.svg" type="image/x-icon">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="fonts/icon-font/css/style.css">
+  <link rel="stylesheet" href="fonts/typography-font/typo-fonts.css">
+  
+  <link rel="stylesheet" href="plugins/aos/aos.min.css">
+  <link rel="stylesheet" href="plugins/animatedModal/animate.css">
+  
+  <link rel="stylesheet" href="./plugins/theme-mode-switcher/switcher-panel.css">
+  <link rel="stylesheet" href="css/main.css">
+  
+   <style>
+    /* --- Global Overrides --- */
+    body, html {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- CONTACT MODAL STYLES --- */
+    .site-modal {
+      display: none; 
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85); 
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      overflow-y: auto !important;
+      z-index: 9999;
+    }
+
+    .site-modal .site-header {
+      background: transparent !important;
+      position: sticky;
+      top: 0;
+      z-index: 10000;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .contact-wrapper {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-title {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .contact-desc {
+      color: #86868b;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      max-width: 90%;
+    }
+
+    .apple-form-card {
+      background: rgba(28, 28, 30, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px;
+      backdrop-filter: blur(40px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .apple-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid transparent; 
+      border-radius: 12px;
+      padding: 18px 20px;
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 16px;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .apple-input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #0071e3;
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+    }
+
+    textarea.apple-input {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .apple-submit-btn {
+      background: #0071e3;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 18px;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .apple-submit-btn:hover {
+      background: #0077ed;
+      transform: translateY(-2px);
+    }
+
+    .contact-detail-row {
+      display: flex;
+      flex-direction: column;
+      margin-top: 40px;
+    }
+    .contact-link {
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: #0071e3; text-decoration: none; }
+    .contact-label { color: #86868b; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+    @media (max-width: 992px) {
+      .contact-title { font-size: 2.5rem; }
+      .apple-form-card { padding: 25px; margin-top: 30px; }
+    }
+  </style>
+</head>
+
+<body data-theme-mode-panel-active="" data-theme="dark" class="theme-mode-panel-open">
+  
+  <div id="preloader" class="preloader">
+    <span class="counter">0</span>
+  </div>
+  
+  <main>
+    <div class="site-wrapper overflow-hidden position-relative">
+      
+      <header class="site-header site-header-menu--right">
+        <div class="container-fluid pr-lg--30 pl-lg--30">
+          <nav class="navbar site-navbar offcanvas-active navbar-expand-lg navbar-light">
+            <div class="brand-logo">
+              <a href="index.html">
+                <div style="display: flex; align-items: center;">
+                  <h2 class="gr-text-9 font-weight-bolder ml-2">visuallymeta.</h2>
+                </div>
+              </a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="mobile-menu">
+              <div class="navbar-nav mr--10">
+                <ul class="navbar-nav main-menu">
+                  <li class="nav-item">
+                    <a class="nav-link gr-text-color font-weight-bold gr-text-11" href="./Design work.html">Design Work.</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link gr-text-color font-weight-bold gr-text-11" href="./creative.html">Creative.</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link gr-text-color font-weight-bold modal-trigger gr-text-11 contact-modal-trigger" href="#contact-modal">contact.</a>
+                  </li>
+                </ul>
+              </div>
+              
+              <button class="d-block d-lg-none offcanvas-btn-close" type="button" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="true" aria-label="Toggle navigation">
+                <i class="gr-cross-icon"></i>
+              </button>
+            </div>
+            
+            <button class="navbar-toggler btn-close-off-canvas hamburger-icon border-0" type="button" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+              <div class="hamburger hamburger--squeeze js-hamburger">
+                <div class="hamburger-box">
+                  <div class="hamburger-inner"></div>
+                </div>
+              </div>
+            </button>
+          </nav>
+        </div>
+      </header>
+         
+      <div class="container-fluid gr-pt-lg-15 gr-pt-7">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="iso-mas-grid-wrap row">
+              
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a href="https://dribbble.com/shots/26799815-State-Biodiversity-Strategy-Action-Plan-Book-Design" class="card-image d-block">
+                  <img src="./image/Creative/17.png" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Book Design</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Biodiversity Action Plan</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                   <a class="card-image d-block">
+                    <img src="./image/Creative/26.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Brochure Design</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Playschool Championship</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                   <a class="card-image d-block">
+                    <img src="./image/Creative/27.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Question Paper Design</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Playschool Championship</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a href="https://dribbble.com/shots/26799718-Monthly-Calendar-of-Activities-Keoladeo-National-Park" class="card-image d-block">
+                  <img src="./image/Creative/18.png" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Calendar</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Keoladeo National Park</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a href="https://dribbble.com/shots/26799700-Important-Indian-Trees-Poster" class="card-image d-block">
+                  <img src="./image/Creative/19.png" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Poster</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Indian Trees</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                   <a class="card-image d-block">
+                    <img src="./image/Creative/28.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Presentation Design</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Proposal</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                   <a class="card-image d-block">
+                    <img src="./image/Creative/29.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Stationary Design</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Letterhead</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a href="https://dribbble.com/shots/26799765-Report-Design-Amrit-Dharohar-Wetlands-of-India" class="card-image d-block">
+                  <img src="./image/Creative/20.png" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Report</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Amrit Dharohar</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                   <a class="card-image d-block">
+                    <img src="./image/Creative/25.gif" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">System Design</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Dashboard</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/8.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Creative</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Gamification</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/Gif trees.gif" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Creative</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Social Media</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/m2.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">App Design</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Gamification</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/16.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Website Design</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Impact page</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/9.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Creative</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Dashboard</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/11.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Creative</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">App Service</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/12.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Art</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Poster Design</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/13.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Presentation</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Pitch Deck</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/14.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Creative</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Concept Design</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/10.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Art</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Craft Cluster</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/1.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Poster</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Creative Art</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/2.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Display</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Standee Design</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/15.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Creative</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Packaging Design</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/3.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Infographic</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Information Design</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/4.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Logo</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Brand Design</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/5.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Creative</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Cover Design</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/6.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Creative</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Poster</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-3 gr-pb-7 isotope-item isotope-mas-item all branding transition-all gr-pb-7">
+                <div class="portfolio-card portfolio-card-masonry">
+                  <a class="card-image d-block">
+                    <img src="./image/Creative/7.webp" alt="" class="w-100">
+                  </a>
+                  <a class="text-left text-block gr-bg-opacity gr-px-7 gr-py-5 gr-border-radius-8 d-block overflow-hidden">
+                    <span class="gr-text-12 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-2 d-block ponter-event-none">Creative</span>
+                    <h3 class="gr-text-7 font-weight-bold mb-0 line-height-1 ponter-event-none gr-heading-color">Landing Page</h3>
+                  </a>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="gr-py-md-11 gr-pt-0 gr-pb-11">
+        <div class="container">
+          <div class="text-center">
+            <p class="heading-small text-uppercase">© 2025 | Anchit's Portfolio | All RIght reserved</p>
+          </div>
+        </div>
+      </footer>
+      
+      <div class="site-modal" id="contact-modal" data-animation-in="animate__fadeInUp" data-animation-out="animate__fadeOutUp">
+        <div class="site-header">
+          <div class="container-fluid gr-pl-lg-10 gr-pr-lg-10">
+            <nav class="navbar pl-0 pr-0">
+              <a class="navbar-brand" href="index.html">
+                <h2 class="gr-text-9 font-weight-bolder text-white ml-2">visuallymeta.</h2>
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="container contact-wrapper">
+          <div class="row w-100 align-items-center">
+            <div class="col-lg-5 order-2 order-lg-1 mb-5 mb-lg-0">
+              <h2 class="contact-title">Let's talk.</h2>
+              <p class="contact-desc">Have a project in mind? Send me a message and I'll get back to you within 24 hours.</p>
+              <div class="contact-detail-row">
+                <span class="contact-label">Email</span>
+                <a href="mailto: anchitgupta99@gmail.com" class="contact-link">anchitgupta99@gmail.com</a>
+            </div>
+             <div class="contact-detail-row mt-4">
+              <span class="contact-label">Socials</span>
+              <div>
+                <a href="https://www.linkedin.com/in/anchitgupta99/" class="text-white mr-3">LinkedIn</a>
+                <a href="https://www.behance.net/anchitgupta" class="text-white mr-3">Behance</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 offset-lg-1 order-1 order-lg-2">
+              <div class="apple-form-card">
+                <form action="https://formsubmit.co/anchitgupta99@gmail.com" method="POST" id="contact-form-simple">
+  
+  <input type="hidden" name="_next" value="https://www.visuallymeta.com/">
+  <input type="hidden" name="_subject" value="New Submission from VisuallyMeta">
+  <input type="hidden" name="_captcha" value="false">
+
+  <input name="name" type="text" class="apple-input" placeholder="Name" required>
+  <input name="email" type="email" class="apple-input" placeholder="Email" required>
+  <input name="subject" type="text" class="apple-input" placeholder="Subject">
+  <textarea name="message" class="apple-input" placeholder="How can I help you?" required></textarea>
+  <button type="submit" class="apple-submit-btn">Send Message</button>
+</form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <script src="js/vendor.min.js"></script>
+  <script src="./plugins/animatedModal/animatedmodal.min.js"></script>
+  <script src="./plugins/isotope/isotope.pkgd.min.js"></script>
+  <script src="./plugins/isotope/packery.pkgd.min.js"></script>
+  <script src="./plugins/isotope/image.loaded.js"></script>
+  <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
+  <script src="js/preloader.js"></script>
+  <script src="js/custom.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      
+      // 1. ISOTOPE MASONRY LOGIC
+      // Changed layoutMode from 'packery' to 'masonry' to fix missing items
+      if (typeof $ !== 'undefined' && $.fn.isotope) {
+        var $gridMas = $('.iso-mas-grid-wrap');
+        $gridMas.imagesLoaded(function() {
+          $gridMas.isotope({
+            itemSelector: '.isotope-mas-item',
+            layoutMode: 'masonry', // FIX: Use standard masonry
+            percentPosition: true
+          });
+        });
+      }
+
+      // 2. MODAL LOGIC
+      const triggers = document.querySelectorAll('.contact-modal-trigger');
+      const modal = document.getElementById('contact-modal');
+      
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.style.display = 'block'; 
+          modal.classList.remove('animate__fadeOutUp');
+          modal.classList.add('animate__fadeInUp');
+        });
+      });
+      
+      const modalLogo = modal.querySelector('.navbar-brand');
+      modalLogo.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.classList.remove('animate__fadeInUp');
+          modal.classList.add('animate__fadeOutUp');
+          setTimeout(() => {
+            modal.style.display = 'none';
+          }, 500);
+      });
+    });
+  </script>
+</body>
+</html>

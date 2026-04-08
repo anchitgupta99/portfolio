@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en" class="csstransitions">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Visuallymeta - Contact Centre Dialer Case Study</title>
+  <link rel="shortcut icon" href="image/svg/logo white.svg" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="fonts/icon-font/css/style.css">
+  <link rel="stylesheet" href="fonts/typography-font/typo-fonts.css">
+
+  <link rel="stylesheet" href="plugins/aos/aos.min.css">
+  <link rel="stylesheet" href="plugins/animatedModal/animate.css">
+
+  <link rel="stylesheet" href="./plugins/theme-mode-switcher/switcher-panel.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <style>
+    /* --- EXACT METALAB VIBE OVERRIDES --- */
+    body,
+    html {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+      -webkit-font-smoothing: antialiased;
+      background-color: #000000;
+      color: #f4f4f5;
+    }
+
+    .metalab-section-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .metalab-sub-statement {
+      font-size: clamp(1.75rem, 3.5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 0;
+      max-width: 900px;
+    }
+
+    .metalab-body {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: #e4e4e7;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+
+    /* Adjusted Hero Title Size for longer text */
+    .metalab-title {
+      font-size: clamp(2.5rem, 7vw, 7rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #fff;
+      margin-bottom: 0;
+    }
+
+    .metalab-label {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      color: #71717a;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-padding {
+      padding: 160px 0;
+    }
+
+    .section-padding-top {
+      padding-top: 160px;
+    }
+
+    .section-padding-bottom {
+      padding-bottom: 160px;
+    }
+
+    @media (max-width: 992px) {
+      .section-padding {
+        padding: 80px 0;
+      }
+
+      .section-padding-top {
+        padding-top: 80px;
+      }
+
+      .section-padding-bottom {
+        padding-bottom: 80px;
+      }
+
+      .metalab-sub-statement {
+        margin-bottom: 40px;
+      }
+    }
+
+    .img-massive {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      background: #111;
+    }
+
+    .container-breakout {
+      max-width: 100%;
+      padding: 0 4%;
+    }
+
+    .metalab-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: #000;
+      padding: 20px 48px;
+      border-radius: 100px;
+      font-size: 1.125rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.3s ease, background 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .metalab-btn:hover {
+      transform: translateY(-4px);
+      background: #e4e4e7;
+    }
+
+    /* --- MODAL STYLES --- */
+    .site-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      overflow-y: auto !important;
+      z-index: 9999;
+    }
+
+    .site-modal .site-header {
+      background: transparent !important;
+      position: sticky;
+      top: 0;
+      z-index: 10000;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .contact-wrapper {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-title {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .contact-desc {
+      color: #86868b;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      max-width: 90%;
+    }
+
+    .apple-form-card {
+      background: rgba(28, 28, 30, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px;
+      backdrop-filter: blur(40px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .apple-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid transparent;
+      border-radius: 12px;
+      padding: 18px 20px;
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 16px;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .apple-input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #0071e3;
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+    }
+
+    textarea.apple-input {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .apple-submit-btn {
+      background: #0071e3;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 18px;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .apple-submit-btn:hover {
+      background: #0077ed;
+      transform: translateY(-2px);
+    }
+
+    .contact-detail-row {
+      display: flex;
+      flex-direction: column;
+      margin-top: 40px;
+    }
+
+    .contact-link {
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover {
+      color: #0071e3;
+      text-decoration: none;
+    }
+
+    .contact-label {
+      color: #86868b;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    /* --- DESIGN INTELLIGENCE SECTION --- */
+    .di-timeline {
+      position: relative;
+      margin-bottom: 80px;
+    }
+
+    .di-timeline::before {
+      content: '';
+      position: absolute;
+      left: 40px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: #222;
+    }
+
+    .di-item {
+      display: flex;
+      gap: 48px;
+      padding: 40px 0;
+      border-bottom: 1px solid #1a1a1a;
+      position: relative;
+    }
+
+    .di-item:last-child {
+      border-bottom: none;
+    }
+
+    .di-number {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: #3f3f46;
+      min-width: 80px;
+      padding-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .di-number::before {
+      content: '';
+      position: absolute;
+      left: -47px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #000;
+      border: 1px solid #333;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .di-item:hover .di-number::before {
+      background: #ffffff;
+      border-color: #ffffff;
+    }
+
+    .di-content {
+      flex: 1;
+    }
+
+    .di-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .di-mono {
+      font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+      font-size: 0.9em;
+      color: #a1a1aa;
+      background: #111;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .di-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .di-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #52525b;
+      border: 1px solid #222;
+      border-radius: 100px;
+      padding: 5px 14px;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .di-item:hover .di-tag {
+      border-color: #333;
+      color: #71717a;
+    }
+
+    .di-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: #1a1a1a;
+      border: 1px solid #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .di-metric {
+      background: #000;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .di-metric-val {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+    }
+
+    .di-metric-lbl {
+      font-size: 0.8rem;
+      color: #52525b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      .di-timeline::before {
+        left: 0;
+      }
+
+      .di-item {
+        flex-direction: column;
+        gap: 16px;
+        padding-left: 24px;
+      }
+
+      .di-number {
+        min-width: auto;
+      }
+
+      .di-number::before {
+        left: -31px;
+      }
+
+      .di-metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body data-theme-mode-panel-active="" data-theme="dark" class="theme-mode-panel-open">
+
+  <div id="preloader" class="preloader">
+    <span class="counter">0</span>
+  </div>
+
+  <main>
+    <div class="site-wrapper overflow-hidden position-relative">
+
+      <header class="site-header site-header-menu--right">
+        <div class="container-fluid pr-lg--30 pl-lg--30">
+          <nav class="navbar site-navbar offcanvas-active navbar-expand-lg navbar-light">
+            <div class="brand-logo">
+              <a href="index.html">
+                <div style="display: flex; align-items: center;">
+                  <h2 class="gr-text-9 font-weight-bold ml-2 text-white">visuallymeta.</h2>
+                </div>
+              </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="mobile-menu">
+              <div class="navbar-nav mr--10">
+                <ul class="navbar-nav main-menu">
+                  <li class="nav-item"><a class="nav-link text-white font-weight-bold gr-text-11"
+                      href="./Design work.html">Design Work.</a></li>
+                  <li class="nav-item"><a class="nav-link text-white font-weight-bold gr-text-11"
+                      href="./creative.html">Creative.</a></li>
+                  <li class="nav-item"><a
+                      class="nav-link text-white font-weight-bold modal-trigger gr-text-11 contact-modal-trigger"
+                      href="#contact-modal">Contact.</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <section class="section-padding-top pb-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h1 class="metalab-title">Contact Centre Dialer</h1>
+            </div>
+          </div>
+
+          <div class="row mt-5 pt-5 border-top" style="border-color: #333 !important;">
+            <div class="col-6 col-md-3 mb-4">
+              <span class="metalab-label">Project Type</span>
+              <span class="text-white font-weight-bold" style="font-size: 1.125rem;">0-to-1 Ecosystem</span>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+              <span class="metalab-label">Client</span>
+              <span class="text-white font-weight-bold" style="font-size: 1.125rem;">Claritel.ai</span>
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+              <span class="metalab-label">Deliverables</span>
+              <span class="text-white font-weight-bold" style="font-size: 1.125rem;">Product Strategy, UX/UI, Brand
+                Identity</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-breakout mt-5">
+          <video autoplay loop muted playsinline class="img-massive mt-4" aria-label="Claritel dashboard view">
+            <source src="./image/image/Claritel/8.mp4" type="video/mp4">
+            <img src="./image/image/Claritel/8.jpg" alt="Claritel dashboard view" class="img-massive mt-4">
+          </video>
+        </div>
+      </section>
+
+      <section class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <span class="metalab-section-title">Introduction</span>
+              <h2 class="metalab-sub-statement">
+                Claritel is redefining the B2B telephony landscape. We partnered with their founding team to architect a
+                complete product ecosystem from scratch—transforming a complex technical premise into a market-ready
+                platform.
+              </h2>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ====== DESIGN INTELLIGENCE SECTION ====== -->
+      <section class="section-padding">
+        <div class="container mb-5 pb-5">
+          <div class="row">
+            <div class="col-12">
+              <span class="metalab-section-title">Design Intelligence</span>
+              <h3 class="metalab-sub-statement mb-5">
+                Five dimensions where rigour, mathematics, and systems thinking shaped every decision.
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="container-breakout">
+          <div class="row align-items-center">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+              <video autoplay loop muted playsinline class="img-massive" aria-label="Claritel Website Design">
+                <source src="./image/image/Claritel/12.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="col-lg-4 pl-lg-5">
+              <p class="metalab-body">
+                Interface design, when practiced rigorously, is not intuitive art — it is applied cognitive science.
+              </p>
+              <p class="metalab-body">
+                This section documents the thinking beneath the surface of the Claritel portal: the conceptual
+                propositions that shaped every interaction, hierarchy, and system behaviour.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+
+          <!-- Timeline items -->
+          <div class="di-timeline">
+
+            <div class="di-item" data-aos="fade-up" data-aos-delay="0">
+              <div class="di-number">01</div>
+              <div class="di-content">
+                <h4 class="di-title">Scalable architecture — designed for entropy</h4>
+                <p class="metalab-body" style="margin-bottom: 0;">
+                  Enterprise portals accumulate features. Without a scalable design grammar, every new capability
+                  introduces visual friction. We architected the portal as a composable system: each component carries
+                  extension vectors — defined axes along which it can grow. The result is a portal that has absorbed
+                  multiple feature additions across product cycles without requiring layout surgery. Customisation is
+                  surfaced through contextual parameterisation, not configuration sprawl.
+                </p>
+                <div class="di-tags">
+                  <span class="di-tag">API-first architecture</span>
+                  <span class="di-tag">Extension vectors</span>
+                  <span class="di-tag">Component composability</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="di-item" data-aos="fade-up" data-aos-delay="60">
+              <div class="di-number">02</div>
+              <div class="di-content">
+                <h4 class="di-title">Accessibility as a mathematical commitment</h4>
+                <p class="metalab-body" style="margin-bottom: 0;">
+                  WCAG 2.1 AA compliance was not a checklist exercise — it was a set of perceptual constraints that
+                  informed every colour decision, every focus state, every interaction affordance. Contrast ratios
+                  follow the luminance formula <span class="di-mono">CR = (L₁ + 0.05) / (L₂ + 0.05)</span>, with a hard
+                  floor of 4.5:1 for body text across all states. Touch targets, keyboard traversal order, and ARIA
+                  semantics were first-order requirements — not post-hoc additions — ensuring the platform performs
+                  correctly across ability spectrums and device classes.
+                </p>
+                <div class="di-tags">
+                  <span class="di-tag">WCAG 2.1 AA</span>
+                  <span class="di-tag">Contrast mathematics</span>
+                  <span class="di-tag">Keyboard & ARIA</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="di-item" data-aos="fade-up" data-aos-delay="120">
+              <div class="di-number">03</div>
+              <div class="di-content">
+                <h4 class="di-title">Personalisation at the data layer</h4>
+                <p class="metalab-body" style="margin-bottom: 0;">
+                  An API-first architecture enabled personalisation that is structural rather than cosmetic. Each user's
+                  role, workflow state, and interaction history influences what the interface surfaces — not through
+                  preference panels, but through layout logic baked into the component model. Supervisors see what
+                  supervisors need. Agents see what agents need. Navigation choice sets were held to 7 ± 2 items per
+                  Hick–Hyman's Law (<span class="di-mono">RT = a + b · log₂(n + 1)</span>), keeping reaction time under
+                  1.2s at every decision point.
+                </p>
+                <div class="di-tags">
+                  <span class="di-tag">Hick–Hyman Law</span>
+                  <span class="di-tag">Role-adaptive layout</span>
+                  <span class="di-tag">Context-first design</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="di-item" data-aos="fade-up" data-aos-delay="180">
+              <div class="di-number">04</div>
+              <div class="di-content">
+                <h4 class="di-title">Analytics designed as narrative, not inventory</h4>
+                <p class="metalab-body" style="margin-bottom: 0;">
+                  The analytics layer — covering AHT, FRT, sentiment trends, agent performance, and predictive CX
+                  scoring — was designed around cognitive hierarchy. Every dashboard answers a primary question first,
+                  allows exploration second, and surfaces exceptions third. Visualisation choices were governed by
+                  Tufte's data-ink principle: <span class="di-mono">data-ink ratio ≥ 0.75</span> across all chart
+                  components. Intelligent automation surfaces anomalies before users need to search for them.
+                </p>
+                <div class="di-tags">
+                  <span class="di-tag">Tufte data-ink ratio</span>
+                  <span class="di-tag">Cognitive hierarchy</span>
+                  <span class="di-tag">Intelligent automation</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="di-item" data-aos="fade-up" data-aos-delay="240">
+              <div class="di-number">05</div>
+              <div class="di-content">
+                <h4 class="di-title">Validation as foundation, not finish line</h4>
+                <p class="metalab-body" style="margin-bottom: 0;">
+                  The portal was tested with real enterprise clients across banking, insurance, and logistics verticals
+                  — not to confirm assumptions, but to falsify them. Each session was structured to surface failure
+                  modes in the design. The product that exists today is architecturally different from the first version
+                  in meaningful ways, because client testing revealed non-obvious cognitive patterns that early
+                  prototypes had not anticipated. Testing reduced time-to-insight on the analytics dashboard by 34% over
+                  prior tooling.
+                </p>
+                <div class="di-tags">
+                  <span class="di-tag">Enterprise user testing</span>
+                  <span class="di-tag">Falsifiable design</span>
+                  <span class="di-tag">Iterative validation</span>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end di-timeline -->
+
+          <!-- Metric strip -->
+          <div class="di-metrics" data-aos="fade-up" data-aos-delay="80">
+            <div class="di-metric">
+              <span class="di-metric-val">7 ± 2</span>
+              <span class="di-metric-lbl">Nav items (Hick's Law)</span>
+            </div>
+            <div class="di-metric">
+              <span class="di-metric-val">≥ 4.5:1</span>
+              <span class="di-metric-lbl">Contrast ratio (WCAG AA)</span>
+            </div>
+            <div class="di-metric">
+              <span class="di-metric-val">≥ 0.75</span>
+              <span class="di-metric-lbl">Data-ink ratio (Tufte)</span>
+            </div>
+            <div class="di-metric">
+              <span class="di-metric-val">−34%</span>
+              <span class="di-metric-lbl">Time-to-insight, validated</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <!-- ====== END DESIGN INTELLIGENCE SECTION ====== -->
+
+      <section class="section-padding">
+        <div class="container mb-5 pb-5">
+          <div class="row">
+            <div class="col-12">
+              <span class="metalab-section-title">Lateral Inspiration</span>
+              <h3 class="metalab-sub-statement mb-5">
+                Engineering a flow state inspired by Formula 1 and gaming paradigms.
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-breakout">
+          <div class="row align-items-center flex-column-reverse flex-lg-row">
+            <div class="col-lg-4 pr-lg-5 mt-5 mt-lg-0">
+              <p class="metalab-body">
+                How do we ensure the product works <em>with</em> the agent rather than fighting them? To find the
+                answer, we looked completely outside the traditional B2B SaaS bubble.
+              </p>
+              <p class="metalab-body">
+                We drew inspiration from the seamless communication of Formula 1 pit stops—where split-second
+                synchronization is paramount. Additionally, we studied gaming interfaces, adopting their
+                controller-based global navigation shortcuts to drastically reduce interaction cost and physical fatigue
+                for power users.
+              </p>
+            </div>
+            <div class="col-lg-8 mb-5 mb-lg-0">
+              <video autoplay loop muted playsinline class="img-massive" aria-label="Claritel Website Design">
+                <source src="./image/image/Claritel/11.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section-padding text-center bg-black">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <span class="metalab-section-title mb-5">Interactive Prototype</span>
+              <figure class="mb-5">
+                <img src="./image/image/Claritel/19.webp" alt="Claritel Interactive Prototype"
+                  class="img-massive mx-auto" style="max-width: 1000px;">
+              </figure>
+              <button id="open-prototype-btn" class="metalab-btn mt-4">
+                Launch Prototype made using AI - Limited Experience
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="py-5 border-top" style="border-color: #333 !important; background-color: #000;">
+        <div class="container">
+          <div class="text-center">
+            <p class="metalab-label mb-0" style="font-size: 0.75rem;">© 2026 | Anchit's Portfolio | All Rights Reserved
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      <div class="site-modal" id="contact-modal" data-animation-in="animate__fadeInUp"
+        data-animation-out="animate__fadeOutUp">
+        <div class="site-header">
+          <div class="container-fluid gr-pl-lg-10 gr-pr-lg-10">
+            <nav class="navbar pl-0 pr-0">
+              <a class="navbar-brand" href="index.html">
+                <h2 class="gr-text-9 font-weight-bold text-white ml-2">visuallymeta.</h2>
+              </a>
+            </nav>
+          </div>
+        </div>
+        <div class="container contact-wrapper">
+          <div class="row w-100 align-items-center">
+            <div class="col-lg-5 order-2 order-lg-1 mb-5 mb-lg-0">
+              <h2 class="contact-title">Let's talk.</h2>
+              <p class="contact-desc">Have a project in mind? Send me a message and I'll get back to you within 24
+                hours.</p>
+              <div class="contact-detail-row">
+                <span class="contact-label">Email</span>
+                <a href="/cdn-cgi/l/email-protection#e3828d808b8a978496939782dadaa3848e828a8fcd808c8e"
+                  class="contact-link"><span class="__cf_email__"
+                    data-cfemail="0e6f606d66677a697b7e7a6f37374e69636f6762206d6163">[email&#160;protected]</span></a>
+              </div>
+              <div class="contact-detail-row mt-4">
+                <span class="contact-label">Socials</span>
+                <div>
+                  <a href="https://www.linkedin.com/in/anchitgupta99/" class="text-white mr-3">LinkedIn</a>
+                  <a href="https://www.behance.net/anchitgupta" class="text-white mr-3">Behance</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 offset-lg-1 order-1 order-lg-2">
+              <div class="apple-form-card">
+                <form action="https://formsubmit.co/anchitgupta99@gmail.com" method="POST" id="contact-form-simple">
+                  <input type="hidden" name="_next" value="https://www.visuallymeta.com/">
+                  <input type="hidden" name="_subject" value="New Submission from VisuallyMeta">
+                  <input type="hidden" name="_captcha" value="false">
+
+                  <input name="name" type="text" class="apple-input" placeholder="Name" required>
+                  <input name="email" type="email" class="apple-input" placeholder="Email" required>
+                  <input name="subject" type="text" class="apple-input" placeholder="Subject">
+                  <textarea name="message" class="apple-input" placeholder="How can I help you?" required></textarea>
+                  <button type="submit" class="apple-submit-btn">Send Message</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-modal" id="prototype-modal" style="display: none; padding: 0; overflow: hidden !important;">
+        <button id="close-prototype-btn"
+          style="position: absolute; top: 20px; right: 24px; z-index: 10001; background: rgba(28, 28, 30, 0.6); color: white; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; width: 44px; height: 44px; font-size: 20px; cursor: pointer; backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; transition: background 0.2s ease;">
+          ✕
+        </button>
+        <iframe src="https://flop-chord-05660041.figma.site/"
+          style="width: 100vw; height: 100vh; border: none; display: block;" allowfullscreen>
+        </iframe>
+      </div>
+
+    </div>
+  </main>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="js/vendor.min.js"></script>
+  <script src="./plugins/animatedModal/animatedmodal.min.js"></script>
+  <script src="./plugins/isotope/isotope.pkgd.min.js"></script>
+  <script src="./plugins/isotope/packery.pkgd.min.js"></script>
+  <script src="./plugins/isotope/image.loaded.js"></script>
+  <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
+  <script src="js/preloader.js"></script>
+  <script src="./plugins/aos/aos.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const protoBtn = document.getElementById('open-prototype-btn');
+      const protoModal = document.getElementById('prototype-modal');
+      const closeProtoBtn = document.getElementById('close-prototype-btn');
+
+      if (protoBtn && protoModal && closeProtoBtn) {
+        protoBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          protoModal.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        });
+
+        closeProtoBtn.addEventListener('click', () => {
+          protoModal.style.display = 'none';
+          document.body.style.overflow = '';
+        });
+      }
+
+      const triggers = document.querySelectorAll('.contact-modal-trigger');
+      const modal = document.getElementById('contact-modal');
+
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.style.display = 'block';
+          modal.classList.remove('animate__fadeOutUp');
+          modal.classList.add('animate__fadeInUp');
+        });
+      });
+
+      const modalLogo = modal.querySelector('.navbar-brand');
+      if (modalLogo) {
+        modalLogo.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.style.display = 'none';
+          modal.classList.remove('animate__fadeInUp');
+          modal.classList.add('animate__fadeOutUp');
+        });
+      }
+
+      // Initialize AOS (Animate On Scroll)
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out',
+        once: true
+      });
+
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" class="csstransitions">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>visuallymeta - Design Work</title>
+  <link rel="shortcut icon" href="image/svg/logo white.svg" type="image/x-icon">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="fonts/icon-font/css/style.css">
+  <link rel="stylesheet" href="fonts/typography-font/typo-fonts.css">
+  
+  <link rel="stylesheet" href="plugins/aos/aos.min.css">
+  <link rel="stylesheet" href="plugins/animatedModal/animate.css">
+  
+  <link rel="stylesheet" href="./plugins/theme-mode-switcher/switcher-panel.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <style>
+    /* --- Global Overrides --- */
+    body, html {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- 1. APPLE CONTACT MODAL STYLES --- */
+    .site-modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* The Glassmorphism Effect */
+      background: rgba(0, 0, 0, 0.85); 
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      overflow-y: auto !important;
+      z-index: 9999;
+    }
+
+    /* Transparent Header inside Modal */
+    .site-modal .site-header {
+      background: transparent !important;
+      position: sticky;
+      top: 0;
+      z-index: 10000;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    /* Modal Layout */
+    .contact-wrapper {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-title {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .contact-desc {
+      color: #86868b;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      max-width: 90%;
+    }
+
+    /* The Glass Form Card */
+    .apple-form-card {
+      background: rgba(28, 28, 30, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px;
+      backdrop-filter: blur(40px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    /* Apple Input Styles */
+    .apple-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid transparent; 
+      border-radius: 12px;
+      padding: 18px 20px;
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 16px;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .apple-input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #0071e3;
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+    }
+
+    textarea.apple-input {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .apple-submit-btn {
+      background: #0071e3;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 18px;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .apple-submit-btn:hover {
+      background: #0077ed;
+      transform: translateY(-2px);
+    }
+
+    /* Contact Details */
+    .contact-detail-row {
+      display: flex;
+      flex-direction: column;
+      margin-top: 40px;
+    }
+    .contact-link {
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: #0071e3; text-decoration: none; }
+    .contact-label { color: #86868b; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+    @media (max-width: 992px) {
+      .contact-title { font-size: 2.5rem; }
+      .apple-form-card { padding: 25px; margin-top: 30px; }
+    }
+  </style>
+</head>
+
+<body data-theme-mode-panel-active="" data-theme="dark" class="theme-mode-panel-open">
+  
+  <div id="preloader" class="preloader">
+    <span class="counter">0</span>
+  </div>
+  
+  <main>
+    <div class="site-wrapper overflow-hidden position-relative">
+      
+      <header class="site-header site-header-menu--right">
+        <div class="container-fluid pr-lg--30 pl-lg--30">
+          <nav class="navbar site-navbar offcanvas-active navbar-expand-lg navbar-light">
+            <div class="brand-logo">
+              <a href="index.html">
+                <div style="display: flex; align-items: center;">
+                  <h2 class="gr-text-9 font-weight-bolder ml-2">visuallymeta.</h2>
+                </div>
+              </a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="mobile-menu">
+              <div class="navbar-nav mr--10">
+                <ul class="navbar-nav main-menu">
+                  
+                  <li class="nav-item">
+                    <a class="nav-link gr-text-color font-weight-bold gr-text-11" href="#portfolio-section">Design Work.</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link gr-text-color font-weight-bold gr-text-11" href="./creative.html">Creative.</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link gr-text-color font-weight-bold modal-trigger gr-text-11 contact-modal-trigger" href="#contact-modal">contact.</a>
+                  </li>
+                  
+                </ul>
+              </div>
+              
+              <button class="d-block d-lg-none offcanvas-btn-close" type="button" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="true" aria-label="Toggle navigation">
+                <i class="gr-cross-icon"></i>
+              </button>
+            </div>
+            
+            <button class="navbar-toggler btn-close-off-canvas hamburger-icon border-0" type="button" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+              <div class="hamburger hamburger--squeeze js-hamburger">
+                <div class="hamburger-box">
+                  <div class="hamburger-inner"></div>
+                </div>
+              </div>
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <div class="hero-section">
+        <div class="portfolio-section gr-pt-lg-15 gr-pt-7" id="portfolio-section">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <ul class="nav isotope-nav justify-content-center gr-pb-9" id="isotope-filters">
+                  <li class="nav-item gr-px-4">
+                    <a class="nav-link gr-text-color-opacity gr-text-12 font-weight-bold text-uppercase active" href="javascript:void(0);" data-filter="*">All</a>
+                  </li>
+                  <li class="nav-item gr-px-4">
+                    <a class="nav-link gr-text-color-opacity gr-text-12 font-weight-bold text-uppercase" href="javascript:void(0);" data-filter=".uxdesign">UX Design</a>
+                  </li>
+                  <li class="nav-item gr-px-4">
+                    <a class="nav-link gr-text-color-opacity gr-text-12 font-weight-bold text-uppercase" href="javascript:void(0);" data-filter=".uidesign">UI Design</a>
+                  </li>
+                  <li class="nav-item gr-px-4">
+                    <a class="nav-link gr-text-color-opacity gr-text-12 font-weight-bold text-uppercase" href="javascript:void(0);" data-filter=".polemic">Polemic Ideas</a>
+                  </li>
+                </ul>
+
+                <div class="iso-grid-wrap row">
+                  
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item uxdesign">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="Claritel.html" class="card-image d-block">
+                        <img src="./image/thumbnail/claritel.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">Platform Design</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="Claritel.html" class="gr-heading-color">Contact Center Dialer</a></h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item uxdesign">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="Geon.html" class="card-image d-block">
+                        <img src="./image/thumbnail/geon.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">OS Design</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="Geon.html" class="gr-heading-color">Social Technology</a></h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item uxdesign">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="TDSAT.html" class="card-image d-block">
+                        <img src="./image/thumbnail/tdsat.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">System Design</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="TDSAT.html" class="gr-heading-color">TDSAT Portal</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                  <!--
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item uidesign">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="Grievance_portal.html" class="card-image d-block">
+                        <img src="./image/thumbnail/dashboard.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">Dashboard UI</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="Grievance_portal.html" class="gr-heading-color">Fintech Grievance Portal</a></h3>
+                      </div>
+                    </div>
+                  </div>-->
+
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item uxdesign">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="webnyay website.html" class="card-image d-block">
+                        <img src="./image/thumbnail/website design.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">Website Design</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="webnyay website.html" class="gr-heading-color">Webnyay website redesign</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                           
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item uxdesign uidesign">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="./tata1mg.html" class="card-image d-block">
+                        <img src="./image/thumbnail/health.webp" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">Healthcare UX</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="./tata1mg.html" class="gr-heading-color">Strategies for TATA 1mg</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                  <!--
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item uidesign">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="Cyber_Security.html" class="card-image d-block">
+                        <img src="./image/thumbnail/cyber.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">Dashboard UI</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="Cyber_Security.html" class="gr-heading-color">Cyber Security Dashboard</a></h3>
+                      </div>
+                    </div>
+                  </div>-->
+
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item  uxdesign">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="https://www.behance.net/gallery/185472667/Promoting-Savings-Behaviour-among-Delivery-partners" class="card-image d-block">
+                        <img src="./image/thumbnail/thumb.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">Behavioural Design</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="https://www.behance.net/gallery/185472667/Promoting-Savings-Behaviour-among-Delivery-partners" class="gr-heading-color">Promoting Savings Behaviour</a></h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item uxdesign">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="https://bootcamp.uxdesign.cc/ux-case-study-food-delivery-23cbbf95a877" class="card-image d-block">
+                        <img src="./image/thumbnail/thumb-1.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">UX Case Study</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="https://bootcamp.uxdesign.cc/ux-case-study-food-delivery-23cbbf95a877" class="gr-heading-color">Food Delivery</a></h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item uidesign ">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="https://www.behance.net/gallery/178532649/Language-Learning-App" class="card-image d-block">
+                        <img src="./image/thumbnail/thumb-5.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">Concept Design</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="https://www.behance.net/gallery/178532649/Language-Learning-App" class="gr-heading-color">Language Learning App</a></h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item uxdesign">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="https://medium.com/@visuallymeta/tribal-crafts-as-a-means-of-subsistence-for-women-d18194e56f4b" class="card-image d-block">
+                        <img src="./image/thumbnail/thumb-4.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">Field Research</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="https://medium.com/@visuallymeta/tribal-crafts-as-a-means-of-subsistence-for-women-d18194e56f4b" class="gr-heading-color">Tribal crafts</a></h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item polemic">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="https://medium.com/@visuallymeta/bee-economics-a-billion-dollar-industry-6809de2ccf23" class="card-image d-block">
+                        <img src="./image/thumbnail/thumb-7.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">Polemic Notes</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="https://medium.com/@visuallymeta/bee-economics-a-billion-dollar-industry-6809de2ccf23" class="gr-heading-color">Bee Economics</a></h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item uxdesign">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="https://www.behance.net/gallery/141912159/UX-Case-Study-Fitness-App" class="card-image d-block">
+                        <img src="./image/thumbnail/thumb-9.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">UX Case Study</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="https://www.behance.net/gallery/141912159/UX-Case-Study-Fitness-App" class="gr-heading-color">Fitness App</a></h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item uidesign">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="https://www.behance.net/gallery/140410313/UI-Design" class="card-image d-block">
+                        <img src="./image/thumbnail/thumb-6.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">UI Concept Design</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="https://www.behance.net/gallery/140410313/UI-Design" class="gr-heading-color">Landing Page</a></h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4 gr-pb-7 gr-pb-lg-13 isotope-item polemic">
+                    <div class="portfolio-card portfolio-card-hover">
+                      <a href="https://medium.com/@visuallymeta/our-new-responsibility-towards-sustainable-world-soil-quality-6363ff2d5ac8" class="card-image d-block">
+                        <img src="./image/thumbnail/thumb-11.png" alt="" class="w-100">
+                      </a>
+                      <div class="text-center gr-pt-8">
+                        <span class="gr-text-13 font-weight-bold gr-text-color-opacity text-uppercase gr-pb-1 d-block">Polemic Notes</span>
+                        <h3 class="gr-text-6 font-weight-bold"><a href="https://medium.com/@visuallymeta/our-new-responsibility-towards-sustainable-world-soil-quality-6363ff2d5ac8" class="gr-heading-color">Soil Quality</a></h3>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <footer class="gr-py-md-11 gr-pt-0 gr-pb-11">
+          <div class="container">
+            <div class="text-center">
+              <p class="heading-small text-uppercase">© 2025 | Anchit's Portfolio | All RIght reserved</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <div class="site-modal" id="contact-modal" data-animation-in="animate__fadeInUp" data-animation-out="animate__fadeOutUp">
+        <div class="site-header">
+          <div class="container-fluid gr-pl-lg-10 gr-pr-lg-10">
+            <nav class="navbar pl-0 pr-0">
+              <a class="navbar-brand" href="index.html">
+                <h2 class="gr-text-9 font-weight-bolder text-white ml-2">visuallymeta.</h2>
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="container contact-wrapper">
+          <div class="row w-100 align-items-center">
+            
+            <div class="col-lg-5 order-2 order-lg-1 mb-5 mb-lg-0">
+              <h2 class="contact-title">Let's talk.</h2>
+              <p class="contact-desc">Have a project in mind? Send me a message and I'll get back to you within 24 hours.</p>
+              
+              <div class="contact-detail-row">
+                <span class="contact-label">Email</span>
+                <a href="mailto: anchitgupta99@gmail.com" class="contact-link">anchitgupta99@gmail.com</a>
+            </div>
+             <div class="contact-detail-row mt-4">
+              <span class="contact-label">Socials</span>
+              <div>
+                <a href="https://www.linkedin.com/in/anchitgupta99/" class="text-white mr-3">LinkedIn</a>
+                <a href="https://www.behance.net/anchitgupta" class="text-white mr-3">Behance</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 offset-lg-1 order-1 order-lg-2">
+              <div class="apple-form-card">
+                <form action="#" method="POST" id="ajax-form">
+                  <input name="name" type="text" class="apple-input" placeholder="Name">
+                  <input name="email" type="email" class="apple-input" placeholder="Email">
+                  <input name="subject" type="text" class="apple-input" placeholder="Subject">
+                  <textarea name="message" class="apple-input" placeholder="How can I help you?"></textarea>
+                  
+                  <button type="submit" class="apple-submit-btn">Send Message</button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <script src="js/vendor.min.js"></script>
+  <script src="./plugins/animatedModal/animatedmodal.min.js"></script>
+  <script src="./plugins/isotope/isotope.pkgd.min.js"></script>
+  <script src="./plugins/isotope/packery.pkgd.min.js"></script>
+  <script src="./plugins/isotope/image.loaded.js"></script>
+  <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
+  <script src="js/preloader.js"></script>
+  <script src="js/custom.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      
+      // 1. ISOTOPE TABS LOGIC
+      if (typeof $ !== 'undefined' && $.fn.isotope) {
+        var $grid = $('.iso-grid-wrap');
+        $grid.imagesLoaded(function() {
+          $grid.isotope({
+            itemSelector: '.isotope-item',
+            layoutMode: 'fitRows',
+            percentPosition: true
+          });
+        });
+        $('#isotope-filters').on('click', 'a', function(e) {
+          e.preventDefault();
+          var filterValue = $(this).attr('data-filter');
+          $grid.isotope({ filter: filterValue });
+          $('#isotope-filters a').removeClass('active');
+          $(this).addClass('active');
+        });
+      }
+
+      // 2. MODAL LOGIC
+      const triggers = document.querySelectorAll('.contact-modal-trigger');
+      const modal = document.getElementById('contact-modal');
+      
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.style.display = 'block'; 
+          modal.classList.remove('animate__fadeOutUp');
+          modal.classList.add('animate__fadeInUp');
+        });
+      });
+      
+      const modalLogo = modal.querySelector('.navbar-brand');
+      modalLogo.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.classList.remove('animate__fadeInUp');
+          modal.classList.add('animate__fadeOutUp');
+          setTimeout(() => {
+            modal.style.display = 'none';
+          }, 500);
+      });
+    });
+  </script>
+</body>
+</html>

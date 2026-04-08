@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en" class="csstransitions">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>visuallymeta - TDSAT System Design</title>
+  <link rel="shortcut icon" href="image/svg/logo white.svg" type="image/x-icon">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="fonts/icon-font/css/style.css">
+  <link rel="stylesheet" href="fonts/typography-font/typo-fonts.css">
+  
+  <link rel="stylesheet" href="plugins/aos/aos.min.css">
+  <link rel="stylesheet" href="plugins/animatedModal/animate.css">
+  
+  <link rel="stylesheet" href="./plugins/theme-mode-switcher/switcher-panel.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <style>
+    /* --- Global Overrides --- */
+    body, html {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- 1. APPLE CONTACT MODAL STYLES --- */
+    .site-modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* The Glassmorphism Effect */
+      background: rgba(0, 0, 0, 0.85); 
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      overflow-y: auto !important;
+      z-index: 9999;
+    }
+
+    /* Transparent Header inside Modal */
+    .site-modal .site-header {
+      background: transparent !important;
+      position: sticky;
+      top: 0;
+      z-index: 10000;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    /* Modal Layout */
+    .contact-wrapper {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-title {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .contact-desc {
+      color: #86868b;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      max-width: 90%;
+    }
+
+    /* The Glass Form Card */
+    .apple-form-card {
+      background: rgba(28, 28, 30, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px;
+      backdrop-filter: blur(40px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    /* Apple Input Styles */
+    .apple-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid transparent; 
+      border-radius: 12px;
+      padding: 18px 20px;
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 16px;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .apple-input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #0071e3;
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+    }
+
+    textarea.apple-input {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .apple-submit-btn {
+      background: #0071e3;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 18px;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .apple-submit-btn:hover {
+      background: #0077ed;
+      transform: translateY(-2px);
+    }
+
+    /* Contact Details */
+    .contact-detail-row {
+      display: flex;
+      flex-direction: column;
+      margin-top: 40px;
+    }
+    .contact-link {
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: #0071e3; text-decoration: none; }
+    .contact-label { color: #86868b; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+    @media (max-width: 992px) {
+      .contact-title { font-size: 2.5rem; }
+      .apple-form-card { padding: 25px; margin-top: 30px; }
+    }
+  </style>
+</head>
+
+<body data-theme-mode-panel-active="" data-theme="dark" class="theme-mode-panel-open">
+  
+  <div id="preloader" class="preloader">
+    <span class="counter">0</span>
+  </div>
+  
+  <main>
+    <div class="site-wrapper overflow-hidden position-relative">
+      
+      <header class="site-header site-header-menu--right">
+        <div class="container-fluid pr-lg--30 pl-lg--30">
+          <nav class="navbar site-navbar offcanvas-active navbar-expand-lg navbar-light">
+            <div class="brand-logo">
+              <a href="index.html">
+                <div style="display: flex; align-items: center;">
+                  <h2 class="gr-text-9 font-weight-bolder ml-2">visuallymeta.</h2>
+                </div>
+              </a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="mobile-menu">
+              <div class="navbar-nav mr--10">
+                <ul class="navbar-nav main-menu">
+                  
+                  <li class="nav-item">
+                    <a class="nav-link gr-text-color font-weight-bold gr-text-11" href="./Design work.html">Design Work.</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link gr-text-color font-weight-bold gr-text-11" href="./creative.html">Creative.</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link gr-text-color font-weight-bold modal-trigger gr-text-11 contact-modal-trigger" href="#contact-modal">contact.</a>
+                  </li>
+                  
+                </ul>
+              </div>
+              
+              <button class="d-block d-lg-none offcanvas-btn-close" type="button" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="true" aria-label="Toggle navigation">
+                <i class="gr-cross-icon"></i>
+              </button>
+            </div>
+            
+            <button class="navbar-toggler btn-close-off-canvas hamburger-icon border-0" type="button" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+              <div class="hamburger hamburger--squeeze js-hamburger">
+                <div class="hamburger-box">
+                  <div class="hamburger-inner"></div>
+                </div>
+              </div>
+            </button>
+          </nav>
+        </div>
+      </header>
+      
+     <style>
+    .case-study-list {
+      list-style-type: disc !important;
+      padding-left: 20px !important;
+      margin-left: 10px !important;
+    }
+
+    .case-study-list li {
+      margin-bottom: 6px;
+    }
+
+    .pill-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-right: 6px;
+      margin-bottom: 4px;
+      opacity: 0.8;
+    }
+    
+    /* Semantic Status Colors */
+    .pill-tag.red { border-color: #ff4d4d; color: #ff4d4d; background: rgba(255, 77, 77, 0.1); }
+    .pill-tag.orange { border-color: #ff9f43; color: #ff9f43; background: rgba(255, 159, 67, 0.1); }
+    .pill-tag.blue { border-color: #54a0ff; color: #54a0ff; background: rgba(84, 160, 255, 0.1); }
+    .pill-tag.green { border-color: #1dd1a1; color: #1dd1a1; background: rgba(29, 209, 161, 0.1); }
+
+    .metric-card {
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 16px 18px;
+      margin-bottom: 16px;
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent);
+    }
+
+    .system-card {
+      border-radius: 8px;
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      margin-bottom: 20px;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .blueprint-row {
+      display: flex;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 15px 0;
+    }
+    .blueprint-label {
+      width: 120px;
+      font-size: 11px;
+      text-transform: uppercase;
+      opacity: 0.6;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .blueprint-content {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .metric-value {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.7;
+    }
+
+    .label-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      opacity: 0.7;
+      margin-bottom: 6px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      opacity: 0.7;
+      margin-bottom: 6px;
+    }
+
+     figure figcaption {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0.65;
+      margin-top: 8px;
+    }
+    
+    table.custom-table {
+        width: 100%;
+        font-size: 13px;
+        border-collapse: collapse;
+    }
+    table.custom-table th {
+        text-transform: uppercase;
+        font-size: 11px;
+        opacity: 0.6;
+        padding: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        text-align: left;
+    }
+    table.custom-table td {
+        padding: 12px 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        vertical-align: top;
+    }
+
+    /* STRATEGIC RATIONALE COMPONENT */
+.why-container {
+  background: rgba(84, 160, 255, 0.05); /* Very faint blue tint */
+  border-left: 3px solid #54a0ff;
+  border-radius: 0 8px 8px 0;
+  padding: 20px 25px;
+  margin-top: 25px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.why-header {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #54a0ff;
+  font-weight: bold;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .why-grid { grid-template-columns: 1fr; gap: 15px; }
+}
+
+.why-column h4 {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 6px;
+}
+
+.why-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+}
+
+.insight-highlight {
+  color: #a29bfe; /* Highlight keyword */
+  font-weight: 600;
+}
+  </style>
+      <div class="portfolio-details-block gr-pt-10 gr-pt-md-12 gr-pb-lg-14 gr-pb-5">
+        <div class="container justify-content-center">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+              <div class="text-center gr-mb-15">
+                <span
+                  class="d-block text-uppercase gr-text-12 font-weight-bold gr-pb-6 gr-heading-color-opacity">UX & System
+                  Design · Public Sector · Legal Tech</span>
+                <h2 class="gr-text-2 font-weight-bold gr-pb-3">
+                  TDSAT: System Design for a Digital Tribunal
+                </h2>
+                <p class="gr-text-9 gr-text-color-opacity gr-pb-4">
+                  Moving beyond "Dashboard Design" to architect a DPDPA-compliant <strong>Role-Based Access System</strong>.
+                  We engineered an object-oriented data model that handles the complexity of legal filing, scrutiny loops, and judgment delivery.
+                </p>
+                <div class="gr-pt-2">
+                  <span class="pill-tag">System Architecture</span>
+                  <span class="pill-tag">OOUX</span>
+                  <span class="pill-tag">Service Blueprints</span>
+                  <span class="pill-tag">RBAC</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-sm-6">
+               <figure class="gr-pl-md-4">
+                  <img src="./image/image/TDSAT/Gif trees.gif" alt="" class="w-100">
+               </figure>
+            </div>
+            <div class="col-sm-6">
+                <figure class="gr-pl-md-4">
+                  <img src="./image/image/TDSAT/26.webp" alt="" class="w-100">
+                </figure>
+            </div>
+
+              
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-images">
+        <div class="container">
+          <div class="row gr-pb-md-10 gr-pb-10">
+            <div class="col-lg-10 offset-lg-1">
+
+              <section class="gr-pb-9">
+
+<style>
+  /* STORY-SPECIFIC STYLES */
+  .guideline-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,255,255,0.2);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+  }
+  .guideline-label {
+    font-size: 10px; text-transform: uppercase; color: #ff9f43; font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 8px;
+  }
+  
+  /* The 5-Step Journey Visual */
+  .journey-chain {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .journey-step {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 11px;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    flex: 1;
+    min-width: 120px;
+  }
+  .journey-arrow { color: #555; font-size: 12px; }
+  
+  /* CIS Feature List Grid */
+  .cis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  .cis-item {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+  }
+  .cis-item::before {
+    content: '✓'; color: #1dd1a1; margin-right: 8px; font-weight: bold;
+  }
+</style>
+
+<section class="gr-pb-9">
+  <div class="section-kicker">01 · THE MANDATE</div>
+  <h3 class="gr-text-6 font-weight-bold gr-pb-3">Modernizing TDSAT: The Constraints</h3>
+  <p class="gr-text-9 gr-text-color-opacity gr-pb-4">
+    The Telecom Disputes Settlement and Appellate Tribunal (TDSAT) required a digital overhaul to handle Telecom, Broadcasting, and Cyber disputes. However, this wasn't a blue-sky project. We had two strict directives:
+  </p>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="guideline-box">
+        <span class="guideline-label">INSTRUCTION 1</span>
+        <p class="gr-text-11 text-white">"The E-Filing software must be functionally similar to the system presently used by the <strong>Delhi High Court</strong>."</p>
+        <p class="gr-text-11 gr-text-color-opacity gr-pt-2">Why? To ensure familiarity for Advocates who are already accustomed to that workflow.</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="guideline-box">
+        <span class="guideline-label">INSTRUCTION 2</span>
+        <p class="gr-text-11 text-white">"Upgrade the current <strong>Case Information System (CIS)</strong> software."</p>
+        <p class="gr-text-11 gr-text-color-opacity gr-pt-2">The backend required a complete re-architecture to handle Notices, Masters, and Bench creation.</p>
+      </div>
+    </div>
+  </div>
+  <p class="gr-text-9 gr-text-color-opacity gr-pb-4">
+    <strong>My Role: </strong>I worked as the sole UX Owner of the project, translating complex judicial workflows into a seamless, DPDPA-compliant digital ecosystem.
+  </p>
+</section>
+
+
+<section class="gr-pb-9">
+  <div class="section-kicker">02 · THE JOURNEY</div>
+  <h3 class="gr-text-6 font-weight-bold gr-pb-3">The Lifecycle of a Dispute</h3>
+  <p class="gr-text-9 gr-text-color-opacity">
+    Before designing screens, we mapped the linear progression of a case from the perspective of an Advocate/Party-in-Person.
+  </p>
+
+  <div class="journey-chain">
+    <div class="journey-step">1. File Complaint<br><span style="opacity:0.5; font-size:9px;">(Or on behalf of client)</span></div>
+    <div class="journey-arrow">►</div>
+    <div class="journey-step">2. Submit Docs<br><span style="opacity:0.5; font-size:9px;">Evidence & Annexures</span></div>
+    <div class="journey-arrow">►</div>
+    <div class="journey-step">3. Record Payment<br><span style="opacity:0.5; font-size:9px;">Court Fees</span></div>
+    <div class="journey-arrow">►</div>
+    <div class="journey-step">4. Get Hearing<br><span style="opacity:0.5; font-size:9px;">Date Allocation</span></div>
+    <div class="journey-arrow">►</div>
+    <div class="journey-step" style="border-color:#1dd1a1; color:#1dd1a1;">5. Resolution<br><span style="opacity:0.5; font-size:9px;">Final Order</span></div>
+  </div>
+</section>
+
+                
+  <section class="gr-pb-9">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-12">
+        <div class="section-kicker">03 · ISSUES AND CONCERNS</div>
+        <h3 class="gr-text-6 font-weight-bold gr-pb-3">How I solved the big problem and increase efficiency by 80%?</h3>
+        <p class="gr-text-9 gr-text-color-opacity">
+          Before intervention, the TDSAT filing process was a rigid, linear relay race. A petition involves multiple supporting documents and a court fee receipt. Once submitted to the Clerk (who generates a Diary Number), the file enters a deep scrutiny hierarchy.
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div style="background: #0f1115; border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px; padding: 30px;">
+          <span class="d-block gr-text-12 font-weight-bold text-uppercase mb-4" style="color: #54a0ff; letter-spacing: 1px;">THE SCRUTINY CHAIN OF COMMAND</span>
+          
+          <div class="d-flex flex-wrap align-items-center justify-content-between" style="gap: 20px;">
+            <div class="text-center">
+              <div style="background: #1a1a1a; padding: 10px 20px; border-radius: 6px; border: 1px solid #333; color: #fff; font-size: 12px; font-weight: bold;">Dealing Assistant</div>
+              <div style="font-size: 10px; color: #888; margin-top: 5px;">Level 1 Check</div>
+            </div>
+            <div style="color: #555;">→</div>
+
+            <div class="text-center">
+              <div style="background: #1a1a1a; padding: 10px 20px; border-radius: 6px; border: 1px solid #333; color: #fff; font-size: 12px; font-weight: bold;">Desk Officer</div>
+              <div style="font-size: 10px; color: #888; margin-top: 5px;">Review</div>
+            </div>
+            <div style="color: #555;">→</div>
+
+            <div class="text-center">
+              <div style="background: #1a1a1a; padding: 10px 20px; border-radius: 6px; border: 1px solid #333; color: #fff; font-size: 12px; font-weight: bold;">Deputy Registrar</div>
+              <div style="font-size: 10px; color: #888; margin-top: 5px;">Approval</div>
+            </div>
+            <div style="color: #555;">→</div>
+
+            <div class="text-center">
+              <div style="background: #1a1a1a; padding: 10px 20px; border-radius: 6px; border: 1px solid #1dd1a1; color: #1dd1a1; font-size: 12px; font-weight: bold;">Registrar</div>
+              <div style="font-size: 10px; color: #1dd1a1; margin-top: 5px;">Final Authority</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);">
+            <div class="d-flex align-items-start">
+              <span style="color: #ff9f43; font-size: 18px; margin-right: 10px;">⚠</span>
+              <p class="gr-text-11 gr-text-color-opacity mb-0">
+                <strong>System Constraint:</strong> The file moves strictly up this chain. If an officer is marked "On Leave," the system logic skips to the next level. However, if the entire chain is absent (leaving only the Dealing Assistant), the workflow deadlocks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="gr-pb-9">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <div style="height: 100%; border-left: 3px solid #ff4d4d; background: linear-gradient(90deg, rgba(255, 77, 77, 0.05) 0%, transparent 100%); padding: 25px;">
+          <span class="d-block gr-text-12 font-weight-bold text-uppercase mb-2" style="color: #ff4d4d;">Issue 01: The Petitioner's Burden</span>
+          <h4 class="gr-text-10 font-weight-bold text-white mb-3">Redundant Resubmission</h4>
+          <p class="gr-text-11 gr-text-color-opacity">
+            When a single document (e.g., an Affidavit) was flagged as incorrect, the legacy system rejected the <em>entire case file</em>. The petitioner received a vague notification and had to re-parse and re-upload every single document, even the valid ones. This lack of granularity shifted the burden of due diligence entirely onto the user.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div style="height: 100%; border-left: 3px solid #ff4d4d; background: linear-gradient(90deg, rgba(255, 77, 77, 0.05) 0%, transparent 100%); padding: 25px;">
+          <span class="d-block gr-text-12 font-weight-bold text-uppercase mb-2" style="color: #ff4d4d;">Issue 02: The Admin's Burden</span>
+          <h4 class="gr-text-10 font-weight-bold text-white mb-3">Loss of Scrutiny Context</h4>
+          <p class="gr-text-11 gr-text-color-opacity">
+            Once a file was resubmitted, it was treated as a "Fresh Case." The specific notes from the Desk Officer or Registrar were lost in the reset. The Admin team was forced to re-verify all documents from scratch to ensure no new errors were introduced, doubling their workload.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="gr-pb-9">
+  <div class="container">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-12 gr-pr-lg-5">
+                
+        <div class="mb-4">
+          <h4 class="gr-text-12 font-weight-bold text-uppercase gr-pb-2" style="color: #54a0ff;">Fix 01: Atomic File Locking</h4>
+          <p class="gr-text-9 gr-text-color-opacity">
+            We introduced <strong>Immutable States</strong> on the E-filing portal. If a document is flagged (e.g., "Defect"), the system "locks" all valid files. The user can <em>only</em> edit the specific defective file. This prevents accidental changes to the rest of the petition and gives the user real-time status updates.
+          </p>
+        </div>
+        <div class="gr-pb-md-5">
+          <figure>
+            <img src="./image/image/TDSAT/m5.webp" alt="" class="w-100">
+         </figure>
+         </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-12 gr-pr-lg-5">
+                
+        <div class="mb-4">
+          <h4 class="gr-text-12 font-weight-bold text-uppercase gr-pb-2" style="color: #54a0ff;">Fix 02: Persistent Timeline</h4>
+          <p class="gr-text-9 gr-text-color-opacity">
+            We built a <strong>Visual Audit Trail</strong> on the Admin Portal. It preserves the "Chain of Authority," displaying exactly how the file traveled and who flagged the error. Officers can now see previous notes and focus their re-check exclusively on the "Delta" (the changed file).
+          </p>
+        </div>
+         <div class="gr-pb-md-5">
+          <figure>
+            <img src="./image/image/TDSAT/n2.webp" alt="" class="w-100">
+         </figure>
+         </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div style="background: radial-gradient(circle at center, rgba(29, 209, 161, 0.1) 0%, #0f1115 100%); border: 1px solid rgba(29, 209, 161, 0.3); border-radius: 12px; padding: 40px; text-align: center;">
+          
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-4">
+              <div style="font-size: 3rem; font-weight: 800; color: #1dd1a1; line-height: 1;">80%</div>
+              <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #fff; margin-top: 10px;">Reduction in Scrutiny Time</div>
+            </div>
+            
+            <div class="col-md-6 text-md-left mt-4 mt-md-0 pl-md-5" style="border-left: 1px solid rgba(255,255,255,0.1);">
+              <p class="gr-text-10 text-white font-weight-bold mb-2">Shifted from Repetition to Precision.</p>
+              <p class="gr-text-11 gr-text-color-opacity mb-0">
+                By allowing admins to review only the corrected defects ("The Delta") rather than the full docket, we eliminated the major bottleneck in the registry workflow.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+              <section class="gr-pb-9">
+                <div class="section-kicker">04 · UI & ACCESSIBILITY</div>
+                <h3 class="gr-text-6 font-weight-bold gr-pb-3">Designing for Context</h3>
+                <p class="gr-text-9 gr-text-color-opacity">
+                  Throughout the project, I treated every touchpoint as part of a single experience rather than separate screens.
+                </p>
+              
+                 <!-- Screens gallery placeholder -->
+              <div class="row justify-content-center">
+                <div class="col-md-12">
+                  <div class="gr-pb-md-5">
+                  
+                      <!-- Context Image -->
+                  <div class="gr-pb-md-5">
+                    <figure>
+                      <img src="./image/image/TDSAT/18.webp" alt="TDSAT current portal context" class="w-100">
+                     
+                    </figure>
+                  </div>
+                  <!-- Context Image -->
+                  <div class="gr-pb-md-5">
+                    <figure>
+                      <img src="./image/image/TDSAT/19.webp" alt="TDSAT current portal context" class="w-100">
+                     <figcaption>Existing TDSAT web portal and UX Audit.</figcaption>
+                    </figure>
+                  </div>
+                  
+                   <div class="gr-pb-md-5">
+                    <figure>
+                      <img src="./image/image/TDSAT/m2.webp" alt="E-Filing screens" class="w-100">
+                    </figure>
+                  </div>
+                   <div class="gr-pb-md-5">
+                    <figure>
+                      <img src="./image/image/TDSAT/m3.webp" alt="E-Filing screens" class="w-100">
+                    </figure>
+                  </div>
+
+                  <div class="gr-pb-md-5">
+                    <figure>
+                      <img src="./image/image/TDSAT/n1.webp" alt="Admin screens" class="w-100">
+                    </figure>
+                  </div>
+                   
+                   <div class="gr-pb-md-5">
+                    <figure>
+                      <img src="./image/image/TDSAT/n3.webp" alt="Admin screens" class="w-100">
+                    </figure>
+                  </div>
+
+                  <div class="gr-pb-md-5">
+                    <h4 class="gr-pt-2">Upgraded CIS Portal</h4>
+                    <figure>
+                      <img src="./image/image/TDSAT/Flow3.webp" alt="CIS portal screens" class="w-100">
+                    </figure>
+                  </div>
+                   
+                  <div class="gr-pb-md-5">
+                    <figure>
+                      <img src="./image/image/TDSAT/p2.webp" alt="CIS screens" class="w-100">
+                    </figure>
+                  </div>
+                  <div class="gr-pb-md-5">
+                    <figure>
+                      <img src="./image/image/TDSAT/p3.webp" alt="CIS screens" class="w-100">
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              </section>
+
+              <section class="gr-pb-9">
+                <div class="section-kicker">08 · IMPACT & METRICS</div>
+                <h3 class="gr-text-6 font-weight-bold gr-pb-3">Projected Outcomes</h3>
+                <div class="row gr-pt-4">
+                  <div class="col-md-4">
+                    <div class="metric-card">
+                      <div class="metric-label">FILING TIME</div>
+                      <div class="metric-value gr-pt-2">65% ↓</div>
+                      <p class="gr-text-10 gr-text-color-opacity gr-pt-2">
+                        From 45–60 minutes of manual filing to ~15–20 minutes with guided, validated flows.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="metric-card">
+                      <div class="metric-label">DEFECTS</div>
+                      <div class="metric-value gr-pt-2">90% ↓</div>
+                      <p class="gr-text-10 gr-text-color-opacity gr-pt-2">
+                        Automated validation and checklists reduce incomplete or non-compliant filings.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="metric-card">
+                      <div class="metric-label">SCRUTINY SPEED</div>
+                      <div class="metric-value gr-pt-2">80% Faster</div>
+                      <p class="gr-text-10 gr-text-color-opacity gr-pt-2">
+                        Dedicated Admin Portal and structured defect workflows cut scrutiny cycles by one fifth.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row gr-pt-2">
+                  <div class="col-md-4">
+                    <div class="metric-card">
+                      <div class="metric-label">ERRORS</div>
+                      <div class="metric-value gr-pt-2">≈0%</div>
+                      <p class="gr-text-10 gr-text-color-opacity gr-pt-2">
+                        Automated fee calculation and digital records minimise human error in fees and filings.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="metric-card">
+                      <div class="metric-label">CALL VOLUME</div>
+                      <div class="metric-value gr-pt-2">80% ↓</div>
+                      <p class="gr-text-10 gr-text-color-opacity gr-pt-2">
+                        Replaced by real-time dashboards and automated notifications on case status.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="metric-card">
+                      <div class="metric-label">COMPLIANCE</div>
+                      <div class="metric-value gr-pt-2">100%</div>
+                      <p class="gr-text-10 gr-text-color-opacity gr-pt-2">
+                        Aligned with DPDPA’s digital office mandate and tribunal data governance needs.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="gr-text-9 gr-text-color-opacity gr-pt-4">
+                  In a single line for decision-makers:
+                  <br><strong>
+                    The new ecosystem is projected to reduce filing time by 65%, cut defects by 90%, increase scrutiny
+                    efficiency, and deliver full real-time transparency — while meeting DPDPA’s digital tribunal
+                    requirements.
+                  </strong>
+                </p>
+              </section>
+
+              <section class="gr-pb-3">
+                <div class="section-kicker">09 · REFLECTION</div>
+                <h3 class="gr-text-6 font-weight-bold gr-pb-3">Designing Justice Infrastructure</h3>
+                <p class="gr-text-9 gr-text-color-opacity">
+                  This project pushed me to think like a <strong>Systems Architect</strong>. I learned that in legal tech, "good design" isn't about minimalism—it's about <strong>clarity in complexity</strong>. By respecting the data structure (OOUX) and the workflow realities (Service Blueprint), we built a system that doesn't just look modern, but actually works for the people administering justice.
+                </p>
+              </section>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="gr-py-md-11 gr-pt-0 gr-pb-11">
+          <div class="container">
+            <div class="text-center">
+              <p class="heading-small text-uppercase">© 2025 | Anchit's Portfolio | All RIght reserved</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+     
+
+      
+      <div class="site-modal" id="contact-modal" data-animation-in="animate__fadeInUp" data-animation-out="animate__fadeOutUp">
+        <div class="site-header">
+          <div class="container-fluid gr-pl-lg-10 gr-pr-lg-10">
+            <nav class="navbar pl-0 pr-0">
+              <a class="navbar-brand" href="index.html">
+                <h2 class="gr-text-9 font-weight-bolder text-white ml-2">visuallymeta.</h2>
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="container contact-wrapper">
+          <div class="row w-100 align-items-center">
+            
+            <div class="col-lg-5 order-2 order-lg-1 mb-5 mb-lg-0">
+              <h2 class="contact-title">Let's talk.</h2>
+              <p class="contact-desc">Have a project in mind? Send me a message and I'll get back to you within 24 hours.</p>
+              
+              <div class="contact-detail-row">
+                <span class="contact-label">Email</span>
+                <a href="mailto: anchitgupta99@gmail.com" class="contact-link">anchitgupta99@gmail.com</a>
+            </div>
+             <div class="contact-detail-row mt-4">
+              <span class="contact-label">Socials</span>
+              <div>
+                <a href="https://www.linkedin.com/in/anchitgupta99/" class="text-white mr-3">LinkedIn</a>
+                <a href="https://www.behance.net/anchitgupta" class="text-white mr-3">Behance</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 offset-lg-1 order-1 order-lg-2">
+              <div class="apple-form-card">
+                <form action="https://formsubmit.co/anchitgupta99@gmail.com" method="POST" id="contact-form-simple">
+  
+  <input type="hidden" name="_next" value="https://www.visuallymeta.com/">
+  <input type="hidden" name="_subject" value="New Submission from VisuallyMeta">
+  <input type="hidden" name="_captcha" value="false">
+
+  <input name="name" type="text" class="apple-input" placeholder="Name" required>
+  <input name="email" type="email" class="apple-input" placeholder="Email" required>
+  <input name="subject" type="text" class="apple-input" placeholder="Subject">
+  <textarea name="message" class="apple-input" placeholder="How can I help you?" required></textarea>
+  <button type="submit" class="apple-submit-btn">Send Message</button>
+</form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  <!-- Vendor Scripts -->
+  <script src="js/vendor.min.js"></script>
+  <script src="./plugins/animatedModal/animatedmodal.min.js"></script>
+  <!-- <script src="./plugins/theme-mode-switcher/gr-theme-mode-switcher.js"></script> -->
+  <script src="./plugins/isotope/isotope.pkgd.min.js"></script>
+  <script src="./plugins/isotope/packery.pkgd.min.js"></script>
+  <script src="./plugins/isotope/image.loaded.js"></script>
+  <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
+  <!-- Activation Script -->
+  <script src="js/preloader.js"></script>
+  <script src="js/custom.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      
+      // 1. ISOTOPE TABS LOGIC
+      if (typeof $ !== 'undefined' && $.fn.isotope) {
+        var $grid = $('.iso-grid-wrap');
+        $grid.imagesLoaded(function() {
+          $grid.isotope({
+            itemSelector: '.isotope-item',
+            layoutMode: 'fitRows',
+            percentPosition: true
+          });
+        });
+        $('#isotope-filters').on('click', 'a', function(e) {
+          e.preventDefault();
+          var filterValue = $(this).attr('data-filter');
+          $grid.isotope({ filter: filterValue });
+          $('#isotope-filters a').removeClass('active');
+          $(this).addClass('active');
+        });
+      }
+
+      // 2. MODAL LOGIC
+      const triggers = document.querySelectorAll('.contact-modal-trigger');
+      const modal = document.getElementById('contact-modal');
+      
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.style.display = 'block'; 
+          modal.classList.remove('animate__fadeOutUp');
+          modal.classList.add('animate__fadeInUp');
+        });
+      });
+      
+      const modalLogo = modal.querySelector('.navbar-brand');
+      modalLogo.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.classList.remove('animate__fadeInUp');
+          modal.classList.add('animate__fadeOutUp');
+          setTimeout(() => {
+            modal.style.display = 'none';
+          }, 500);
+      });
+    });
+  </script>
+</body>
+
+</html>
